@@ -152,52 +152,64 @@ function App() {
 
   return (
     <div className="app">
-      <textarea
-        placeholder="your text comes here"
-        className="w-[100%] h-[10vh] bg-slate-300 overflow-y-auto uppercase p-2 onfocus:border-none text-slate-700 font-bold font-montserrat"
-        type="text"
-        value={input}
-        onChange={handleInputChange}
-      />
-      <div className="w-[100%]">
+      <div className="fixed z-1 bottom-0 w-[100%]">
+      <div className="w-[100%] flex flex-row">
         <button
-          className="w-[10%] h-[4vh] p-2 bg-slate-100 rounded-md m-2 uppercase font-bold shadow-[2px_2px_1px_1px_rgba(0,0,0,1)]"
+          className="h-[4vh] py-2 px-4 bg-slate-100 rounded-md m-2 uppercase font-bold shadow-[2px_2px_1px_1px_rgba(0,0,0,1)]"
           onClick={() => applyStyle("title")}
         >
           Title
         </button>
         <button
-          className="w-[10%] h-[4vh] p-2 bg-slate-100 rounded-md m-2 uppercase font-bold shadow-[2px_2px_1px_1px_rgba(0,0,0,1)]"
+          className="h-[4vh] py-2 px-4 bg-slate-100 rounded-md m-2 uppercase font-bold shadow-[2px_2px_1px_1px_rgba(0,0,0,1)]"
           onClick={() => applyStyle("headline")}
         >
           Headline
         </button>
         <button
-          className="w-[10%] h-[4vh] p-2 bg-slate-100 rounded-md m-2 uppercase font-bold shadow-[2px_2px_1px_1px_rgba(0,0,0,1)]"
+          className="h-[4vh] py-2 px-4 bg-slate-100 rounded-md m-2 uppercase font-bold shadow-[2px_2px_1px_1px_rgba(0,0,0,1)]"
           onClick={() => applyStyle("sec_headline")}
         >
           Secondary
         </button>
         <button
-          className="w-[10%] h-[4vh] p-2 bg-slate-100 rounded-md m-2 uppercase font-bold shadow-[2px_2px_1px_1px_rgba(0,0,0,1)]"
+          className="h-[4vh] py-2 px-4 bg-slate-100 rounded-md m-2 uppercase font-bold shadow-[2px_2px_1px_1px_rgba(0,0,0,1)]"
           onClick={() => applyStyle("text")}
         >
           Text
         </button>
         <button
-          className="w-[10%] h-[4vh] p-2 bg-slate-100 rounded-md m-2 uppercase font-bold shadow-[2px_2px_1px_1px_rgba(0,0,0,1)]"
+          className="h-[4vh] py-2 px-4 bg-slate-100 rounded-md m-2 uppercase font-bold shadow-[2px_2px_1px_1px_rgba(0,0,0,1)]"
           onClick={() => applyStyle("picture")}
         >
           Picture
         </button>
         <button
-          className="w-[10%] h-[4vh] p-2 bg-slate-100 rounded-md m-2 uppercase font-bold shadow-[2px_2px_1px_1px_rgba(0,0,0,1)]"
+          className="h-[4vh] py-2 px-4 bg-slate-100 rounded-md m-2 uppercase font-bold shadow-[2px_2px_1px_1px_rgba(0,0,0,1)]"
           onClick={() => applyStyle("list")}
         >
           List
         </button>
+        <CopyToClipboard text={html} onCopy={() => alert("Copied HTML!")}>
+        <button className="h-[4vh] py-2 px-4 bg-lime-500 rounded-md m-2 uppercase font-bold shadow-[2px_2px_1px_1px_rgba(0,0,0,1)]">
+          Copy HTML
+        </button>
+      </CopyToClipboard>
+      <CopyToClipboard text={JSON.stringify({[title]: object}, null, 2)} onCopy={() =>{ alert("Copied Object!");console.log(object);}}>
+        <button className="h-[4vh] py-2 px-4 bg-lime-500  rounded-md m-2 uppercase font-bold shadow-[2px_2px_1px_1px_rgba(0,0,0,1)]">
+          Copy Object
+        </button>
+      </CopyToClipboard>
       </div>
-      <div className='flex flex-col w-[100%] lg:px-[30%] p-[7vw] py-[12vh] bg-slate-100 overflow-x-hidden'>
+      <textarea
+        placeholder="your text comes here"
+        className="w-[100%] h-[10vh] bg-slate-300 overflow-y-auto uppercase p-2 onfocus:border-none text-slate-700 font-bold font-montserrat "
+        type="text"
+        value={input}
+        onChange={handleInputChange}
+      />
+      </div>
+      <div className='flex flex-col w-[100%] lg:px-[30%] p-[7vw] py-[20vh] bg-slate-100 overflow-x-hidden'>
         <header>
           <h1 className='w-[100%] text-headline lg:text-[4vw] text-[10vw] font-playfair font-bold'>{title || "title not yet set"}</h1>
           <div className="w-[100%] h-[1px] bg-slate-300 rounded" />
@@ -207,16 +219,6 @@ function App() {
         </header>        
         {art.map(renderContent)}
       </div>
-      <CopyToClipboard text={html} onCopy={() => alert("Copied HTML!")}>
-        <button className="w-[10%] h-[4vh] p-2 bg-slate-100 rounded-md m-2 uppercase font-bold shadow-[2px_2px_1px_1px_rgba(0,0,0,1)]">
-          Copy HTML
-        </button>
-      </CopyToClipboard>
-      <CopyToClipboard text={JSON.stringify({[title]: object}, null, 2)} onCopy={() =>{ alert("Copied Object!");console.log(object);}}>
-        <button className="w-[10%] h-[4vh] p-2 bg-slate-100 rounded-md m-2 uppercase font-bold shadow-[2px_2px_1px_1px_rgba(0,0,0,1)]">
-          Copy Object
-        </button>
-      </CopyToClipboard>
     </div>
   );
 }
