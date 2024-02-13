@@ -127,7 +127,6 @@ function App() {
         return (
           <div key={index}>
             <h2  className='w-[100%] text-[8vw] md:text-[2.5vw] mb-[4vh] mt-[8vh] font-playfair text-text'>{el.content}</h2>
-            <hr className="w-[100%] h-[0.5px] mb-[6vh] bg-headline border-0.5 rounded" />
           </div>
         );
       case "sec_headline":
@@ -201,10 +200,10 @@ function App() {
       <div className='flex flex-col w-[100%] lg:px-[30%] p-[7vw] py-[12vh] bg-slate-100 overflow-x-hidden'>
         <header>
           <h1 className='w-[100%] text-headline lg:text-[4vw] text-[10vw] font-playfair font-bold'>{title || "title not yet set"}</h1>
-          <hr className="w-[100%] h-[1px] bg-headline border-0.5 rounded" />
+          <div className="w-[100%] h-[1px] bg-slate-300 rounded" />
           <div className="flex flex-row justify-between items-center w-[100%] h-[2vh] text-[0.5vw] border-0.5 rounded font-montserrat">
           </div>
-          <hr className="w-[100%] h-[1px] bg-headline font-afacad border-0.5 rounded" />
+          <hr className="w-[100%] h-[1px] bg-slate-300 rounded" />
         </header>        
         {art.map(renderContent)}
       </div>
