@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import "./App.css";
 import Clippy from "./Clippy";
+import ProductListContainer from "./pages/ProductListContainer";
+import LoginForm from "./components/LoginForm";
 
 function App() {
   const [input, setInput] = useState("");
-  const [output, setOutput] = useState("");
+
   const [html, setHtml] = useState([]);
   const [object, setObject] = useState([]);
   const [title,setTitle] = useState("")
@@ -17,27 +19,16 @@ function App() {
   const art = object
 
   const applyStyle = (styleType) => {
-    let styledOutput;
     let htmlOutput = [...html];
     let objectOutput = [ ...object ]; 
     
     switch (styleType) {
       case "title":
-        styledOutput = (
-          <>
-            <h1>{input} set at title</h1>
-            <br />
-          </>
-        );
+        
         setTitle(input)
         break;
       case "headline":
-        styledOutput = (
-          <>
-            <h1>{input}</h1>
-            <br />
-          </>
-        );
+        
         htmlOutput.push(`<h1>${input}</h1>`);
         objectOutput.push({
           type: "headline",
@@ -45,78 +36,44 @@ function App() {
         });
         break;
       case "sec_headline":
-        styledOutput = (
-          <>
-            <br />
-            <h2>{input}</h2>
-          </>
-        );
+      
         htmlOutput.push(`<h2>${input}</h2>`);
         objectOutput.push({ type: "sec_headline", content: input });
         break;
       case "text":
-        styledOutput = (
-          <>
-            <p>{input}</p>
-            <br />
-          </>
-        );
+        
         htmlOutput.push(`<p>${input}</p>`);
         objectOutput.push({ type: "text", content: input });
         break;
       case "picture":
-        styledOutput = (
-          <>
-            <img src={input} alt="input" />
-            <br />
-          </>
-        );
+      
         htmlOutput.push(`<img src="${input}" alt="input" />`);
         objectOutput.push({ type: "picture", content: input });
         break;
       case "link":
-        styledOutput = (
-          <>
-            <a href={input} target="_blank" rel="noopener noreferrer">
-              {input}
-            </a>
-            <br />
-          </>
-        );
+       
         htmlOutput.push(
           `<a href="${input}" target="_blank" rel="noopener noreferrer">${input}</a>`
         );
         objectOutput.push({ type: "link", content: input });
         break;
       case "italic":
-        styledOutput = (
-          <>
-            <em>{input}</em>
-            <br />
-          </>
-        );
+       
         htmlOutput.push(`<em>${input}</em>`);
         objectOutput.push({ type: "italic", content: input });
         break;
       case "list":
-        styledOutput = (
-          <>
-            <ul>
-              <li>{input}</li>
-            </ul>
-            <br />
-          </>
-        );
+       
         htmlOutput.push(`<ul><li>${input}</li></ul>`);
         objectOutput.push({ type: "list", content: input });
         break;
       default:
-        styledOutput = <p>{input}</p>;
+
         htmlOutput.push(`<p>${input}</p>`);
         objectOutput.push({ type: "default", content: input });
     }
 
-    setOutput(styledOutput);
+  
     setHtml(htmlOutput);
     setObject(objectOutput);
     setInput("");
@@ -153,6 +110,9 @@ function App() {
 
   return (
     <div className="app">
+       <h1>Termékek</h1>
+      <ProductListContainer />
+      <LoginForm />
       <Clippy/>
       <div className="fixed z-1 bottom-0 w-[100%]">
       <div className="w-[100%] flex flex-row">
