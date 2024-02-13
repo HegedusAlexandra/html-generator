@@ -16,13 +16,33 @@
 		background-position: 0% 50%;
 	}
 }
-.pattern {
-  color: #000;
-}
 
-.pattern.diagonal-lines-display {
-  width: 100%;
-  margin: 20px;
-  background-image: repeating-linear-gradient(-45deg, currentColor 0, currentColor 8px, transparent 0, transparent 50%);
-  background-size: 24px 24px
-}
+
+.triangle-container {
+	position: relative;
+	width: 10px; /* Width of the outer triangle + border */
+	height: 10px; /* Height of the outer triangle + border */
+	top: -2px;
+	right: -20px
+  }
+  
+  .triangle-border, .triangle-background {
+	position: absolute;
+	width: 0;
+	height: 0;
+  }
+  
+  .triangle-border {
+	border-left: 15px solid transparent; /* Half the width of the outer triangle */
+	border-right: 15px solid transparent; /* Half the width of the outer triangle */
+	border-top: 17px solid black; /* Height and color of the outer triangle */
+  }
+  
+  .triangle-background {
+	top: -1px; /* Adjust based on the border size */
+	left: 1px; /* Adjust to align the inner triangle */
+	border-left: 14px solid transparent; /* Half the width of the inner triangle */
+	border-right: 14px solid transparent; /* Half the width of the inner triangle */
+	border-top: 16px solid #fef3c7; /* Height and color of the inner triangle */
+  }
+  

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import "./App.css";
+import Clippy from "./Clippy";
 
 function App() {
   const [input, setInput] = useState("");
@@ -152,6 +153,7 @@ function App() {
 
   return (
     <div className="app">
+      <Clippy/>
       <div className="fixed z-1 bottom-0 w-[100%]">
       <div className="w-[100%] flex flex-row">
         <button
